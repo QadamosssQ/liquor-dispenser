@@ -37,4 +37,5 @@ void loop(){
     digitalWrite(liqid2, LOW);
     digitalWrite(liqid3, LOW);
     digitalWrite(liqid4, LOW);
+    
 }
