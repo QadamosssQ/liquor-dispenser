@@ -8,6 +8,8 @@
 #define liqid3btn 7
 #define liqid4btn 8
 
+#define cupSensor 9
+
 void setup() {
   pinMode(liqid1btn, INPUT_PULLUP);
   pinMode(liqid2btn, INPUT_PULLUP);
@@ -18,9 +20,13 @@ void setup() {
   pinMode(liqid2, OUTPUT);
   pinMode(liqid3, OUTPUT);
   pinMode(liqid4, OUTPUT);
+
+  pinMode(cupSensor, INPUT);
 }
 
 void loop(){
+
+  if(digitalRead(cupSensor) == LOW){
     while(digitalRead(liqid1btn) == LOW){
       digitalWrite(liqid1, HIGH);
     }
@@ -32,10 +38,19 @@ void loop(){
     }
     while(digitalRead(liqid4btn) == LOW){
       digitalWrite(liqid4, HIGH);
-    }
-    digitalWrite(liqid1, LOW);
-    digitalWrite(liqid2, LOW);
-    digitalWrite(liqid3, LOW);
-    digitalWrite(liqid4, LOW);
+    } 
+
+    stopLiquids();
+
+  } else {
+    stopLiquids();
+  }
     
+}
+
+void stopLiquids() {
+  digitalWrite(liqid1, LOW);
+  digitalWrite(liqid2, LOW);
+  digitalWrite(liqid3, LOW);
+  digitalWrite(liqid4, LOW);
 }
